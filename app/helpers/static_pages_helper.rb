@@ -6,7 +6,7 @@ module StaticPagesHelper
 		if page_title.empty?
 			title
 		else
-			page_title
+			title + " | " + page_title 
 		end	
 	end
 
