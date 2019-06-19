@@ -1,1 +1,6 @@
-<%= @user.name %>, <%= @user.email %>
+<h1><%= @user.name %></h1>
+<h3><%= @user.email %></h3>
+<% @lists.each do |item| %>
+<h4><%= item.title %></h4>
+<h5><%= item.text %></h5>
+<% end %>
