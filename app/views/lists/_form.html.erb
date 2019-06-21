@@ -1,0 +1,15 @@
+<%= form_for([:user, @list]) do |f| %>
+  <%= render 'shared/error_messages', object: @list %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
+
+  <%= f.label :text %>
+  <%= text_area(:list,:text, cols: 24, row: 20, class: 'form-control')  %>
+
+  <%= f.label :date_due %>
+  <%= f.text_field :date_due, class: 'form-control' %>
+
+
+  <%= f.submit 'submit', class: "btn btn-primary" %>
+<% end %>
