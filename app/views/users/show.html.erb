@@ -1,6 +1,12 @@
-<h1><%= @user.name %></h1>
-<h3><%= @user.email %></h3>
-<% @lists.each do |item| %>
+<% provide(:title, 'User List') %>
+<% @list.each do |item| %>
 <h4><%= item.title %></h4>
 <h5><%= item.text %></h5>
+<h5><%= link_to item.purpose, purpose_user_list_path(@user, item.id) %></h5>
+<h5><%= link_to 'edit',   edit_user_list_path(@user, item.id)  %></h5>
+<h5><%= link_to 'delete', user_list_path(item), method: :delete, data: { confirm: 'Are you sure?'} %></h5>
+<br>
 <% end %>
+
+
+<p><%= link_to 'New List', new_user_list_path(@user.id) %></p>
