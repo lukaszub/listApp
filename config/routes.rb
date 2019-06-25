@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   get	'/login' ,			   	to: 'sessions#new'
   post	'/login' ,				to: 'sessions#create'
   delete '/logout',				to: 'sessions#destroy' 
+
   
   resources :users do
+    get '/work-list',    to: 'lists#work'
+    get '/home-list',    to: 'lists#home'
     resources :lists  do
       member do  
       get  :purpose
