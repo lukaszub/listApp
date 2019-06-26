@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user,  only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :logged_in_user,  only: [:edit, :update]
+  before_action :correct_user,   only: [:show, :edit, :update]
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
  
   def new
   	@user = User.new
   end
 
   def show
-  	@user = User.find(params[:id])
+  	@user = User.find(@user.id) 
+    redirect_to(root_url) if @user.nil?
     @list = @user.lists
   end
 
@@ -17,7 +19,7 @@ class UsersController < ApplicationController
   	if @user.save
       log_in @user
       flash[:success] = "Welcome to ListApp!"
-      redirect_to @user  
+      redirect_back_or user 
   	else
   		render 'new'
   	end	
@@ -39,14 +41,22 @@ class UsersController < ApplicationController
 
   private
 
-  		def user_params
-  			params.require(:user).permit(:name, :email, :password,
+  		 def user_params
+  		  params.require(:user).permit(:name, :email, :password,
   										 :password_confirmation)	
-  		end
+       end
 
-      def correct_user
+       def correct_user
         @user = User.find(params[:id])  
-        redirect_to(root_url) unless current_user?(@user)
+        unless current_user?(@user)
+          flash[:info] = "Trying access wrong user"  
+          redirect_to(root_url)  
+        end
+       end
+
+       def handle_record_not_found
+        flash[:danger] = "Access denyied"
+        redirect_to (root_url)    
       end
 
 end
