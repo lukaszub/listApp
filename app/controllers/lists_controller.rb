@@ -1,11 +1,17 @@
 class ListsController < ApplicationController
-	before_action :set_list, only: [:new,:edit, :update, :purpose]
+	before_action :set_list, only: [:new,:edit, :create, :update, :purpose, :work, :home]
 	
 	def new
-		@list = List.new
-		@user = User.find(params[:user_id])
+		@list = current_user.lists.build
 	end
 
+	def work
+		@list = @user.lists.work	
+	end
+
+	def home
+		@list = @user.lists.home	
+	end
 
 	def edit	
 		@user = User.find(params[:user_id])
@@ -13,7 +19,7 @@ class ListsController < ApplicationController
 	end	
 
 	def create
-		@list = current_user.lists.build(list_params)	
+		@list = @user.lists.build(list_params)	
 		if @list.save
 			flash[:success] = "List create!"
 			redirect_to user_url(current_user)
@@ -33,15 +39,14 @@ class ListsController < ApplicationController
 	end
 
 	def destroy
-		 @user = User.find(params[:id])
-		 @list = List.find(params[:user_id])
+		 @list = List.find(params[:id])
 		 @list.destroy
 		 flash[:success] = "List deleted."
 		 redirect_to user_url(current_user)
 	end
 
 	def purpose
-		
+		@list = List.find(params[:id])	
 		@list.home? ? @list.work! : @list.home!
 		flash[:success] = "Purpose  has been changed." 
 		redirect_to user_url(@user)
@@ -54,6 +59,6 @@ class ListsController < ApplicationController
 			end
 
 			def list_params
-				params.require(:list).permit(:text, :title, :date_due)	
+				params.require(:list).permit(:text, :title, :date_due, :purpose)	
 			end
 end
