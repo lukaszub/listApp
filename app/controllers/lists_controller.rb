@@ -19,7 +19,7 @@ class ListsController < ApplicationController
 	end	
 
 	def create
-		@list = current_user.lists.build(list_params)	
+		@list = @user.lists.build(list_params)	
 		if @list.save
 			flash[:success] = "List create!"
 			redirect_to user_url(current_user)
@@ -59,6 +59,6 @@ class ListsController < ApplicationController
 			end
 
 			def list_params
-				params.require(:list).permit(:text, :title, :date_due)	
+				params.require(:list).permit(:text, :title, :date_due, :purpose)	
 			end
 end
