@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_121247) do
+ActiveRecord::Schema.define(version: 2019_06_26_113330) do
 
   create_table "lists", force: :cascade do |t|
     t.string "title"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2019_06_19_121247) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "remember_digest"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
