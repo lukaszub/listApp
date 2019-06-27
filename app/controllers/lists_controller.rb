@@ -6,7 +6,7 @@ class ListsController < ApplicationController
 	end
 
 	def work
-		@list = @user.lists.work	
+		@list = @user.lists.work.my_order	
 	end
 
 	def home

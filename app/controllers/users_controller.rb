@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   	if @user.save
       log_in @user
       flash[:success] = "Welcome to ListApp!"
-      redirect_back_or user 
+      redirect_back_or @user 
   	else
   		render 'new'
   	end	
