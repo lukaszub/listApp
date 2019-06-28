@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   	@user = User.find(@user.id) 
     redirect_to(root_url) if @user.nil?
     @list = @user.lists
+    @list_work = @user.lists.work.my_order
+    @list_home = @user.lists.home  
   end
 
   def create

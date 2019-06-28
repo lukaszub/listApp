@@ -1,13 +1,19 @@
 <% provide(:title, 'User List') %>
-<% @list.each do |item| %>
-<h4><%= item.title %></h4>
-<h5><%= item.text %></h5>
-<h6><%= item.created_at %></h6>
-<h5><%= link_to item.purpose, purpose_user_list_path(@user, item.id), id: "purpose" %></h5>
-<h5><%= link_to 'edit',   edit_user_list_path(@user, item.id)  %></h5>
-<h5><%= link_to 'delete', user_list_path(@user, item.id), method: :delete, data: { confirm: 'Are you sure?'} %></h5>
-<br>
-<% end %>
+
+<%= render 'shared/buttom_links' %>
 
 
-<p><%= link_to 'New List', new_user_list_path(@user.id) %></p>
+<div class="list-all">
+	<h1>All:</h1>
+	<%= render'shared/current', object: @list %>	
+</div>
+
+<div class="list-home">
+	<h1>Home:</h1>
+	<%= render'shared/current', object: @list_home %>	
+</div>
+
+<div class="list-work">
+	<h1>Work:</h1>
+	<%= render'shared/current', object: @list_work %>	
+</div>

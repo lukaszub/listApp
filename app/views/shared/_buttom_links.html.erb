@@ -1,10 +1,10 @@
-   <div class="dropdown">
-     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="taria-expanded="false">Dropdown button
-     </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <%= link_to'Work List', user_work_list_path(current_user), class: "dropdown-item"%>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-     </div>
-    </div> 
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    List view
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" id="all" href="#">All</a>
+    <a class="dropdown-item" id="work"href="#">Work</a>
+    <a class="dropdown-item" id="home"href="#">Home</a>
+  </div>
+</div>
