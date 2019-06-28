@@ -3,7 +3,7 @@
 <h4><%= item.title %></h4>
 <h5><%= item.text %></h5>
 <h6><%= item.created_at %></h6>
-<h5><%= link_to item.purpose, purpose_user_list_path(@user, item.id) %></h5>
+<h5><%= link_to item.purpose, purpose_user_list_path(@user, item.id), id: "purpose" %></h5>
 <h5><%= link_to 'edit',   edit_user_list_path(@user, item.id)  %></h5>
 <h5><%= link_to 'delete', user_list_path(@user, item.id), method: :delete, data: { confirm: 'Are you sure?'} %></h5>
 <br>
