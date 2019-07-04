@@ -1,13 +1,15 @@
-
 <% object.each do |item| %>
-<h4><%= item.title %></h4>
-<h5><%= item.text %></h5>
-<h6><%= item.created_at %></h6>
-<h5><%= link_to item.purpose, purpose_user_list_path(@user, item.id), id: "purpose" %></h5>
-<h5><%= link_to 'edit',   edit_user_list_path(@user, item.id)  %></h5>
-<h5><%= link_to 'delete', user_list_path(@user, item.id), method: :delete, data: { confirm: 'Are you sure?'} %></h5>
-<br>
+	<div class="div-all">
+	<h3><%= item.title.truncate(20) %></h3>
+	<h5><%= item.text.truncate(20) %></h5>
+	<p>Date for: <%=time_tag item.date_due %></p>
+	<p>created: <%= time_ago_in_words(item.created_at)  %> ago</p>	
+	<p><%= link_to item.purpose, purpose_user_list_path(@user, item.id), id: "purpose" %></p>
+	<p><%= link_to 'view', user_list_path(@user, item.id) %></p>
+	<%= link_to '<i class="fas fa-edit"></i>'.html_safe,   edit_user_list_path(@user, item.id)  %>
+	<%= link_to '<i id="delete-icon"class="fas fa-times-circle"></i>'.html_safe, user_list_path(@user, item.id), method: :delete, data: { confirm: 'Are you sure?'} %>
+	</div>	
 <% end %>
 
 
-<p><%= link_to 'New List', new_user_list_path(@user.id) %></p>
+

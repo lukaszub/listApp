@@ -1,0 +1,24 @@
+<div class="show-list-main">
+	<div class="mt-5 container-fluid">
+		<div class="row justify-content-md-center">
+			<div class="col-md-8">
+				<h1>Your list:</h1>
+				<div class="card">
+  				<div class="card-header">
+   				 <h3>title: <%= @list.title %></h3>
+ 					 </div>
+  				<ul class="list-group list-group-flush">
+  			  	<li class="list-group-item">List: <%= @list.text %></li>
+   				 	<li class="list-group-item">create: <%= time_ago_in_words(@list.created_at)%> ago</li>
+   					<li class="list-group-item">date due: <%= time_ago_in_words(@list.date_due)%>, <%= @list.date_due %></li>
+  				</ul>
+				</div>
+				<div class="mt-5 pb-2">
+					<%= link_to 'Back',   user_path(@user), class:"float-left btn btn-outline-primary"  %>
+					<%= link_to '<i class="fas fa-edit"></i>'.html_safe,   edit_user_list_path(@user, @list.id), class:" edit-button-show float-right"  %>
+				</div>
+				<div class="clearfix mb-3"></div>
+			</div>
+		</div>
+	</div>
+</div>

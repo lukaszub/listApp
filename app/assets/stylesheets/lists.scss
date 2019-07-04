@@ -1,2 +1,18 @@
 @import "bootstrap";
 @import "jquery-ui";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.show-list-main{
+	height: 80vh;
+	width: 100%;
+	overflow: auto;
+}
+
+.show-list-main .card{
+	margin-top: 4em;
+}
+
+.edit-button-show i{
+	font-size: 30px;
+}

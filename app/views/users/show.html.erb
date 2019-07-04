@@ -1,19 +1,26 @@
 <% provide(:title, 'User List') %>
 
-<%= render 'shared/buttom_links' %>
+<div class="container-fluid">
+	<div class="pt-3 float-left">
+		<h2 class="title">All:</h2>
+	</div>
+	<%= render 'shared/buttom_links' %>		
+</div>
+<div class="clearfix"></div>
+<div class="user-list-main">
+	<div class="flex-display list-all">
+			<%= render'shared/current', object: @list %>	
+	</div>
 
+	<div class="flex-display list-home">
+		<%= render'shared/current', object: @list_home %>	
+	</div>
 
-<div class="list-all">
-	<h1>All:</h1>
-	<%= render'shared/current', object: @list %>	
+	<div class="flex-display list-work">
+		<%= render'shared/current', object: @list_work %>	
+	</div>
 </div>
 
-<div class="list-home">
-	<h1>Home:</h1>
-	<%= render'shared/current', object: @list_home %>	
-</div>
 
-<div class="list-work">
-	<h1>Work:</h1>
-	<%= render'shared/current', object: @list_work %>	
-</div>
+<%= link_to '<i class="far fa-plus-square"></i>'.html_safe, new_user_list_path(@user.id), id: 'add-button' %></p>
+

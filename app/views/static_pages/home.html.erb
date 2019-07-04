@@ -1,32 +1,31 @@
 <% provide(:title, "Home | Welcome to ListApp") %>
 
-
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-  <h1 class="display-5">AppList</h1>
-  <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. <span>It’s built with default Bootstrap components and utilities with little customization.</span></p>
-</div>
-
-<div class="container">
-  <div class="card-deck mb-3 text-center">
-    <div class="card mb-4 shadow-sm">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Free application</h4>
+<div id="home-background">
+    <div class="container-1">
+      <div class="mobile">
+           <h3 class="p-1">Simply click a sign up button to find out ListApp.</h3>
+           <%= link_to 'Sign Up', new_user_path, class:" btn btn-dark", id:"sign-button" %> 
       </div>
-      <div class="card-body">
-          <ul class="list-unstyled mt-3 mb-4">
-          <li>You can create list for your self</li>
-          <li>Email support</li>
-          <li>Help center access</li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-block 
-        btn-outline-primary">Sign up for free</button>
-
-        <button type="button" id="eventcheck"class="btn btn-lg btn-block 
-        btn-outline-primary">event check</button>
+      <div class="frame1">
+        <div class="frame2">
+        <i class="fas fa-arrow-circle-down"></i>
+        <h3>Simply click a sign up button to find out ListApp.</h3>
+        <%= link_to 'Sign Up', new_user_path, class:"btn btn-outline-dark btn-lg mt-3", id:"sign-button" %>     
+        </div> 
       </div>
-    </div>
- 
-  </div>
-
-
+    </div> 
+    <div class="container-featuers">
+      <div class="feat1">
+          <i class="fas fa-calendar"></i>
+          <p>Set dates for your lists.</p>
+      </div>
+      <div class="feat2">
+        <i class="fas fa-briefcase"></i> 
+        <p>Create lists for work purposes.</p> 
+      </div>
+      <div class="feat3">
+        <i class="fas fa-home"></i> 
+        <p>Create your personal lists.</p> 
+      </div>  
+    </div> 
 </div>

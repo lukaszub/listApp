@@ -13,6 +13,11 @@ class ListsController < ApplicationController
 		@list = @user.lists.home	
 	end
 
+	def show
+		@user = User.find(params[:user_id])
+		@list = List.find(params[:id])		
+	end
+
 	def edit	
 		@user = User.find(params[:user_id])
 		@list = List.find(params[:id])		
@@ -21,7 +26,7 @@ class ListsController < ApplicationController
 	def create
 		@list = @user.lists.build(list_params)	
 		if @list.save
-			flash[:success] = "List create!"
+			flash[:success] = "List created!"
 			redirect_to user_url(current_user)
 		else
 			render 'new'
